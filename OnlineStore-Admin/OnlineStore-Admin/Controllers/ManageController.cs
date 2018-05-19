@@ -6,9 +6,10 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using OnlineStore_Admin;
 using OnlineStore_Admin.Models;
 
-namespace OnlineStore_Admin.Controllers
+namespace OnlineStore_ADMIN.Controllers
 {
     [Authorize]
     public class ManageController : Controller

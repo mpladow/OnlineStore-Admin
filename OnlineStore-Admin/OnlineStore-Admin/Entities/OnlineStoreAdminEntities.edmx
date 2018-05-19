@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OnlineShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OnlineShop.dbo.Customer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TitleId" Type="int" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="FirstName" Type="nchar" MaxLength="50" />
+          <Property Name="LastName" Type="nchar" MaxLength="50" />
+          <Property Name="StreetAddress" Type="varchar" MaxLength="100" />
+          <Property Name="StateAddress" Type="varchar" MaxLength="100" />
+          <Property Name="SuburbAddress" Type="varchar" MaxLength="100" />
+          <Property Name="CountryAddress" Type="varchar" MaxLength="100" />
+          <Property Name="IsSubcribed" Type="bit" />
+          <Property Name="StreetShippingAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="StateShippingAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="SuburbShippingAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountryShippingAddress" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OnlineShop.dbo.Order' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="Price" Type="nchar" MaxLength="10" />
+          <Property Name="CompletedAt" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OnlineShop.dbo.Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="DeletedAt" Type="datetime" />
+          <Property Name="SellPrice" Type="int" />
+          <Property Name="CostPrice" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OnlineShop.dbo.RefTitle' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RefTitle">
+          <Key>
+            <PropertyRef Name="TitleId" />
+          </Key>
+          <Property Name="TitleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="Name" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="OnlineShopModelStoreContainer">
+          <EntitySet Name="Customer" EntityType="Self.Customer" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Customer].[CustomerId] AS [CustomerId], 
+    [Customer].[TitleId] AS [TitleId], 
+    [Customer].[OrderId] AS [OrderId], 
+    [Customer].[FirstName] AS [FirstName], 
+    [Customer].[LastName] AS [LastName], 
+    [Customer].[StreetAddress] AS [StreetAddress], 
+    [Customer].[StateAddress] AS [StateAddress], 
+    [Customer].[SuburbAddress] AS [SuburbAddress], 
+    [Customer].[CountryAddress] AS [CountryAddress], 
+    [Customer].[IsSubcribed] AS [IsSubcribed], 
+    [Customer].[StreetShippingAddress] AS [StreetShippingAddress], 
+    [Customer].[StateShippingAddress] AS [StateShippingAddress], 
+    [Customer].[SuburbShippingAddress] AS [SuburbShippingAddress], 
+    [Customer].[CountryShippingAddress] AS [CountryShippingAddress]
+    FROM [dbo].[Customer] AS [Customer]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Order" EntityType="Self.Order" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Order].[OrderId] AS [OrderId], 
+    [Order].[ProductId] AS [ProductId], 
+    [Order].[CustomerId] AS [CustomerId], 
+    [Order].[Price] AS [Price], 
+    [Order].[CompletedAt] AS [CompletedAt]
+    FROM [dbo].[Order] AS [Order]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Product" EntityType="Self.Product" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Product].[ProductId] AS [ProductId], 
+    [Product].[Name] AS [Name], 
+    [Product].[Description] AS [Description], 
+    [Product].[Quantity] AS [Quantity], 
+    [Product].[DeletedAt] AS [DeletedAt], 
+    [Product].[SellPrice] AS [SellPrice], 
+    [Product].[CostPrice] AS [CostPrice]
+    FROM [dbo].[Product] AS [Product]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RefTitle" EntityType="Self.RefTitle" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RefTitle].[TitleId] AS [TitleId], 
+    [RefTitle].[CustomerId] AS [CustomerId], 
+    [RefTitle].[Name] AS [Name]
+    FROM [dbo].[RefTitle] AS [RefTitle]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OnlineShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TitleId" Type="Int32" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="StreetAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StateAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SuburbAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CountryAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsSubcribed" Type="Boolean" />
+          <Property Name="StreetShippingAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StateShippingAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SuburbShippingAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryShippingAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="Price" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CompletedAt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="DeletedAt" Type="DateTime" Precision="3" />
+          <Property Name="SellPrice" Type="Int32" />
+          <Property Name="CostPrice" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RefTitle">
+          <Key>
+            <PropertyRef Name="TitleId" />
+          </Key>
+          <Property Name="TitleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="OnlineShopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="RefTitles" EntityType="Self.RefTitle" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OnlineShopModelStoreContainer" CdmEntityContainer="OnlineShopEntities">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="OnlineShopModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="TitleId" ColumnName="TitleId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+                <ScalarProperty Name="StateAddress" ColumnName="StateAddress" />
+                <ScalarProperty Name="SuburbAddress" ColumnName="SuburbAddress" />
+                <ScalarProperty Name="CountryAddress" ColumnName="CountryAddress" />
+                <ScalarProperty Name="IsSubcribed" ColumnName="IsSubcribed" />
+                <ScalarProperty Name="StreetShippingAddress" ColumnName="StreetShippingAddress" />
+                <ScalarProperty Name="StateShippingAddress" ColumnName="StateShippingAddress" />
+                <ScalarProperty Name="SuburbShippingAddress" ColumnName="SuburbShippingAddress" />
+                <ScalarProperty Name="CountryShippingAddress" ColumnName="CountryShippingAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="OnlineShopModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CompletedAt" ColumnName="CompletedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="OnlineShopModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
+                <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+                <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefTitles">
+            <EntityTypeMapping TypeName="OnlineShopModel.RefTitle">
+              <MappingFragment StoreEntitySet="RefTitle">
+                <ScalarProperty Name="TitleId" ColumnName="TitleId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
