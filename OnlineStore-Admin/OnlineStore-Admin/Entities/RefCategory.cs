@@ -12,20 +12,19 @@ namespace OnlineStore_Admin.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class RefTitle
+    public partial class RefCategory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public RefTitle()
+        public RefCategory()
         {
-            this.Customers = new HashSet<Customer>();
+            this.Products = new HashSet<Product>();
         }
     
-        public int TitleId { get; set; }
+        public int CategoryId { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customer> Customers { get; set; }
-        public virtual RefTitle RefTitle1 { get; set; }
-        public virtual RefTitle RefTitle2 { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

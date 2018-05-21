@@ -5,10 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ddb346f9afc04a55acab2738c4ffa841" Name="Diagram1">
-        <EntityTypeShape EntityType="OnlineShopModel.Customer" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineShopModel.Order" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineShopModel.Product" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineShopModel.RefTitle" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineShopModel.Customer" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="OnlineShopModel.Order" Width="1.5" PointX="5.25" PointY="2" />
+        <EntityTypeShape EntityType="OnlineShopModel.Product" Width="1.5" PointX="3" PointY="6.625" />
+        <EntityTypeShape EntityType="OnlineShopModel.RefCategory" Width="1.5" PointX="0.75" PointY="7.25" />
+        <EntityTypeShape EntityType="OnlineShopModel.RefTitle" Width="1.5" PointX="0.75" PointY="2.25" />
+        <AssociationConnector Association="OnlineShopModel.FK_Customer_Customer" />
+        <AssociationConnector Association="OnlineShopModel.FK_Customer_RefTitle" />
+        <AssociationConnector Association="OnlineShopModel.FK_Order_Customer" />
+        <AssociationConnector Association="OnlineShopModel.FK_Order_Product" />
+        <AssociationConnector Association="OnlineShopModel.FK_Product_RefCategory" />
+        <AssociationConnector Association="OnlineShopModel.FK_RefTitle_RefTitle" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

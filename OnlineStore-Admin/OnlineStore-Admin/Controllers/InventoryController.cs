@@ -1,4 +1,5 @@
 ﻿using OnlineStore_Admin.Entities;
+using OnlineStore_Admin.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,20 +23,38 @@ namespace OnlineStore_ADMIN.Controllers
         }
         public ActionResult Edit(int id)
         {
+
             var productInDb = os.Products
                 .FirstOrDefault(x => x.ProductId == id);
+            
+
             if (productInDb == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                //InventoryVM vm = new InventoryVM()
-                //{
-
-                //}
-                return View(productInDb);
+                ProductVM vm = new ProductVM
+                {
+                    Product = productInDb
+                };
+                return View(vm);
             }
         }
+        
+        //public ActionResult Save(ProductVM product)
+        //{
+        //    if (product.ProductId == 0)
+        //    {
+        //        var newProduct = AutoMapper.Mapper.Map<Product, ProductVM>(product);
+        //        os.Products.Add(product);
+        //    }
+        //    else
+        //    {
+        //        var productInDb = os.Products.FirstOrDefault(w => w.ProductId == product.ProductId);
+
+                 
+        //    }
+        //}
     }
 }

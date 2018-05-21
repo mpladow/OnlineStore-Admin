@@ -19,5 +19,8 @@ namespace OnlineStore_Admin.Entities
         public Nullable<int> CustomerId { get; set; }
         public string Price { get; set; }
         public Nullable<System.DateTime> CompletedAt { get; set; }
+    
+        public virtual Customer Customer { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

@@ -28,6 +28,7 @@ namespace OnlineStore_Admin.Entities
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<RefCategory> RefCategories { get; set; }
         public virtual DbSet<RefTitle> RefTitles { get; set; }
     }
 }

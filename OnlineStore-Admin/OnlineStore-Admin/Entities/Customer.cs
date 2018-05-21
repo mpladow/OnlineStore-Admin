@@ -14,9 +14,14 @@ namespace OnlineStore_Admin.Entities
     
     public partial class Customer
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Customer()
+        {
+            this.Orders = new HashSet<Order>();
+        }
+    
         public int CustomerId { get; set; }
         public Nullable<int> TitleId { get; set; }
-        public Nullable<int> OrderId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string StreetAddress { get; set; }
@@ -28,5 +33,11 @@ namespace OnlineStore_Admin.Entities
         public string StateShippingAddress { get; set; }
         public string SuburbShippingAddress { get; set; }
         public string CountryShippingAddress { get; set; }
+    
+        public virtual Customer Customer1 { get; set; }
+        public virtual Customer Customer2 { get; set; }
+        public virtual RefTitle RefTitle { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
