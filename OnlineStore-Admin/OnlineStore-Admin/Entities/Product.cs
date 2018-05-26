@@ -11,8 +11,7 @@ namespace OnlineStore_Admin.Entities
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -29,7 +28,6 @@ namespace OnlineStore_Admin.Entities
         public Nullable<System.DateTime> DeletedAt { get; set; }
         public Nullable<int> SellPrice { get; set; }
         public Nullable<int> CostPrice { get; set; }
-        [Display(Name = "Product Stocked?")]
         public bool IsStocked { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

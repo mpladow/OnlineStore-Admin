@@ -1,0 +1,60 @@
+﻿@model OnlineStore_Admin.ViewModels.CustomerFormVM
+
+@if (Model.Customer.CustomerId == 0)
+{
+    <h2>New Customer</h2>
+}
+else
+{
+    <h2>Edit Customer</h2>
+}
+
+
+@using (Html.BeginForm("Save", "Customer"))
+{
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.TitleId, "Title")
+        @Html.DropDownListFor(m => m.Customer.TitleId, new SelectList(Model.Titles, "TitleId", "Name"), "Select", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.FirstName, "First Name")
+        @Html.TextBoxFor(m => m.Customer.FirstName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.LastName, "Last Name")
+        @Html.TextBoxFor(m => m.Customer.LastName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.StreetShippingAddress, "Street - Shipping Address")
+        @Html.TextBoxFor(m => m.Customer.StreetShippingAddress, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.SuburbShippingAddress, "Suburb - Shipping Address"))
+        @Html.TextBoxFor(m => m.Customer.SuburbShippingAddress, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.PostCodeShippingAddress, "Post Code - Shipping Address") )
+        @Html.TextBoxFor(m => m.Customer.PostCodeShippingAddress, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.StateShippingAddress, "State - Shipping Address"))
+        @Html.TextBoxFor(m => m.Customer.StateShippingAddress, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.CountryShippingAddress, "Country - Shipping Address"))
+        @Html.TextBoxFor(m => m.Customer.CountryShippingAddress, new { @class = "form-control" })
+    </div>
+    <div class="checkbox">
+        @Html.LabelFor(m => m.Customer.IsSubcribed, "Subscribe to newsletter")
+        @Html.CheckBoxFor(m => m.Customer.IsSubcribed)
+    </div>
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.HiddenFor(m => m.Customer.CustomerId)
+    </div>
+    <button class="btn-primary">Save</button>
+
+}
+

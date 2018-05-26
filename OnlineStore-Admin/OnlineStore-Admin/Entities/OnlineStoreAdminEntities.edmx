@@ -14,14 +14,17 @@
           <Property Name="FirstName" Type="nchar" MaxLength="50" />
           <Property Name="LastName" Type="nchar" MaxLength="50" />
           <Property Name="StreetAddress" Type="varchar" MaxLength="100" />
-          <Property Name="StateAddress" Type="varchar" MaxLength="100" />
           <Property Name="SuburbAddress" Type="varchar" MaxLength="100" />
+          <Property Name="PostCodeAddress" Type="nchar" MaxLength="10" />
+          <Property Name="StateAddress" Type="varchar" MaxLength="100" />
           <Property Name="CountryAddress" Type="varchar" MaxLength="100" />
-          <Property Name="IsSubcribed" Type="bit" />
           <Property Name="StreetShippingAddress" Type="nvarchar" MaxLength="100" />
-          <Property Name="StateShippingAddress" Type="nvarchar" MaxLength="100" />
           <Property Name="SuburbShippingAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="PostCodeShippingAddress" Type="nchar" MaxLength="10" />
+          <Property Name="StateShippingAddress" Type="nvarchar" MaxLength="100" />
           <Property Name="CountryShippingAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="DeletedAt" Type="datetime" />
+          <Property Name="IsSubcribed" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -209,14 +212,17 @@
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="StreetAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="StateAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="SuburbAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PostCodeAddress" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="StateAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CountryAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="IsSubcribed" Type="Boolean" />
           <Property Name="StreetShippingAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="StateShippingAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SuburbShippingAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PostCodeShippingAddress" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="StateShippingAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CountryShippingAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DeletedAt" Type="DateTime" Precision="3" />
+          <Property Name="IsSubcribed" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Customer1" Relationship="OnlineShopModel.FK_Customer_Customer" FromRole="Customer" ToRole="Customer1" />
           <NavigationProperty Name="Customer2" Relationship="OnlineShopModel.FK_Customer_Customer" FromRole="Customer1" ToRole="Customer" />
           <NavigationProperty Name="RefTitle" Relationship="OnlineShopModel.FK_Customer_RefTitle" FromRole="Customer" ToRole="RefTitle" />
@@ -350,14 +356,17 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="OnlineShopModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="CountryShippingAddress" ColumnName="CountryShippingAddress" />
-                <ScalarProperty Name="SuburbShippingAddress" ColumnName="SuburbShippingAddress" />
-                <ScalarProperty Name="StateShippingAddress" ColumnName="StateShippingAddress" />
-                <ScalarProperty Name="StreetShippingAddress" ColumnName="StreetShippingAddress" />
                 <ScalarProperty Name="IsSubcribed" ColumnName="IsSubcribed" />
+                <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
+                <ScalarProperty Name="CountryShippingAddress" ColumnName="CountryShippingAddress" />
+                <ScalarProperty Name="StateShippingAddress" ColumnName="StateShippingAddress" />
+                <ScalarProperty Name="PostCodeShippingAddress" ColumnName="PostCodeShippingAddress" />
+                <ScalarProperty Name="SuburbShippingAddress" ColumnName="SuburbShippingAddress" />
+                <ScalarProperty Name="StreetShippingAddress" ColumnName="StreetShippingAddress" />
                 <ScalarProperty Name="CountryAddress" ColumnName="CountryAddress" />
-                <ScalarProperty Name="SuburbAddress" ColumnName="SuburbAddress" />
                 <ScalarProperty Name="StateAddress" ColumnName="StateAddress" />
+                <ScalarProperty Name="PostCodeAddress" ColumnName="PostCodeAddress" />
+                <ScalarProperty Name="SuburbAddress" ColumnName="SuburbAddress" />
                 <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />

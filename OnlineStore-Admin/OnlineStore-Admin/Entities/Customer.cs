@@ -25,14 +25,17 @@ namespace OnlineStore_Admin.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string StreetAddress { get; set; }
-        public string StateAddress { get; set; }
         public string SuburbAddress { get; set; }
+        public string PostCodeAddress { get; set; }
+        public string StateAddress { get; set; }
         public string CountryAddress { get; set; }
-        public Nullable<bool> IsSubcribed { get; set; }
         public string StreetShippingAddress { get; set; }
-        public string StateShippingAddress { get; set; }
         public string SuburbShippingAddress { get; set; }
+        public string PostCodeShippingAddress { get; set; }
+        public string StateShippingAddress { get; set; }
         public string CountryShippingAddress { get; set; }
+        public Nullable<System.DateTime> DeletedAt { get; set; }
+        public bool IsSubcribed { get; set; }
     
         public virtual Customer Customer1 { get; set; }
         public virtual Customer Customer2 { get; set; }

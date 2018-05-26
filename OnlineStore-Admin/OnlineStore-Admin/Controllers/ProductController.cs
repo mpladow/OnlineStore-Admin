@@ -62,6 +62,7 @@ namespace OnlineStore_ADMIN.Controllers
 
                 if(productInDb != null)
                 {
+                    //will be replaced with automapper
                     productInDb.Name = product.Name;
                     productInDb.Description = product.Description;
                     productInDb.CategoryId = product.CategoryId;
