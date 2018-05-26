@@ -32,8 +32,10 @@
     <div id="indexSideNav" class="sidenav">
         @Html.ActionLink("Home", "Index", "Home", null, new { @class = "navbarItem" })
         <a class="fa fa-home navbarItem-collapse" display="none"></a>
-        @Html.ActionLink("Products", "Index", "Inventory", null, new { @class = "navbarItem" })
+        @Html.ActionLink("Products", "Index", "Product", null, new { @class = "navbarItem" })
         <a class="fa fa-clipboard-list navbarItem-collapse" display="none"></a>
+        @Html.ActionLink("Customers", "Index", "Customer", null, new { @class = "navbarItem" })
+        <a class="fa fa-address-book navbarItem-collapse" display="none"></a>
         @Html.ActionLink("About", "About", "Home", null, new { @class = "navbarItem" })
         <a class="fa fa-info navbarItem-collapse" display="none"></a>
         @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "navbarItem" })

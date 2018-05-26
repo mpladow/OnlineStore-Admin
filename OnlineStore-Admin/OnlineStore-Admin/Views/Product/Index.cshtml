@@ -2,27 +2,29 @@
 
 
 <h2>Product List</h2>
-<button class="btn btn-default">Add products</button>
+<button class="btn btn-default" id="btnAdd">Add products</button>
 
 @if (Model.Any())
 {
-<table id="products" class="table-responsive">
+<table id="products" class="table-bordered">
     <thead>
         <tr>
             <th>Name</th>
             <th>Description</th>
             <th>Quantity</th>
-            <th>Price</th>
+            <th>Cost Price</th>
+            <th>Sell Price</th>
             <th>Currently Stocked?</th>
         </tr>
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@Html.ActionLink(item.Name, "Edit", "Inventory", new { id = item.ProductId }, null)</td>
+                    <td>@Html.ActionLink(item.Name, "Edit", "Product", new { id = item.ProductId }, null)</td>
                     <td>@item.Description</td>
                     <td>@item.Quantity</td>
                     <td>@item.CostPrice</td>
                     <td>@item.SellPrice</td>
+                    <td>@(item.IsStocked?"Yes":"No")</td>
                 </tr>
             }
     </thead>   
@@ -32,11 +34,14 @@ else
 {
     <p> There are currently no products in stock.</p>
 }
-<script>
+@*<script>
     $(function () {
         $('#products').DataTable({
         });
     });
-</script>
+    $('#btnAdd').click(() => {
+
+    })
+</script>*@
 
 

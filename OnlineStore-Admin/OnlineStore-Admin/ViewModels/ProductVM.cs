@@ -6,7 +6,7 @@ using System.Web;
 
 namespace OnlineStore_Admin.ViewModels
 {
-    public class ProductVM
+    public class ProductFormVM
     {
         public Product Product { get; set; }
         public List<RefCategory>   Categories { get; set; }
